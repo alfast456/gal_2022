@@ -42,7 +42,7 @@
             <div class="col-md-7">
                 <h2 class="featurette-heading fw-normal lh-1">{{ $layanan->title }}</h2>
                 <p class="lead">{{ $layanan->description }}</p>
-                    <a class="btn btn-primary ml-auto mb-2" href="{{ route('service-detail',$layanan->id_service) }}">
+                    <a target="_blank" class="btn btn-primary ml-auto mb-2" href="https://wa.me/6281219103438?text=Halo%20Saya%20tertarik%20dengan%20layanan%20{{ $layanan->title }}">
                         Contact Us</a>
             </div>
             <div class="col-md-5">
@@ -63,7 +63,7 @@
             <div class="col-md-7 order-md-2">
               <h2 class="featurette-heading fw-normal lh-1">{{ $layanan->title }}</h2>
               <p class="lead">{{ $layanan->description }}</p>
-              <a class="btn btn-primary ml-auto mb-2" href="{{ route('service-detail',$layanan->id_service) }}">
+              <a target="_blank" class="btn btn-primary ml-auto mb-2" href="https://wa.me/6281219103438?text=Halo%20Saya%20tertarik%20dengan%20layanan%20{{ $layanan->title }}">
                 Contact Us</a>
             </div>
             <div class="col-md-5 order-md-1">

@@ -69,17 +69,23 @@
                                     <path
                                         d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                                 </svg>
-                                Shared instance
+                                Our Company
                             </h4>
 
                             <!-- Text -->
+                            <?php
+                            $company = DB::table('abouts')->get();
+                            ?>
                             <p class="text-muted">
-                                Affordable, scalable and performant. The perfect solution for small apps.
+                                @foreach ($company as $item)
+                                {{ Str::limit($item->about_content, 80) }}
+                                @endforeach
                             </p>
 
                             <!-- Link -->
-                            <a href="#!" class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none">
-                                Baca Selengkapnya
+                            <a href="{{ url('/about') }}"
+                                class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none">
+                                Read More
                             </a>
 
                         </div>
@@ -101,17 +107,23 @@
                                     <path fill-rule="evenodd"
                                         d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                 </svg>
-                                Shared cluster
+                                Listed Service
                             </h4>
 
                             <!-- Text -->
+                            <?php
+                            $service = DB::table('services')->get();
+                            ?>
                             <p class="text-muted">
-                                A mid-sized solution for businesses undergoing rapid user growth.
+                                @foreach ($service as $item)
+                                {{ $item->title }}
+                                @endforeach
                             </p>
 
                             <!-- Link -->
-                            <a href="#!" class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none">
-                                Baca Selengkapnya
+                            <a href="{{ url('/service') }}"
+                                class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none">
+                                Read More
                             </a>
 
                         </div>
@@ -132,7 +144,7 @@
                                     <path
                                         d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
                                 </svg>
-                                Dedicated cluster
+                                Contact Us
                             </h4>
 
                             <!-- Text -->
@@ -141,10 +153,10 @@
                             </p>
 
                             <!-- Link -->
-                            <a href="#!" class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none ">
-                                Baca Selengkapnya
+                            <a target="_blank" href="https://wa.me/6281219103438?text=Halo%20Saya%20tertarik%20dengan%20layanan%20Anda"
+                                class="btn btn-sm btn-primary fs-sm fw-bold text-decoration-none">
+                                Read More
                             </a>
-
                         </div>
                     </div>
 
@@ -156,98 +168,98 @@
     <!-- CONTROL -->
     <section class="pt-8 pt-md-11">
         @foreach ($about as $tentang)
-<div class="container">
-    <div class="p-4 p-md-5 mb-4 row align-items-center ">
-        <div class="col-12 col-md-5 col-lg-6">
+        <div class="container">
+            <div class="p-4 p-md-5 mb-4 row align-items-center ">
+                <div class="col-12 col-md-5 col-lg-6">
 
-            <div class=" position-relative">
+                    <div class=" position-relative">
 
-                <!-- Image -->
-                <div class="img-skewed img-skewed-start">
+                        <!-- Image -->
+                        <div class="img-skewed img-skewed-start">
 
-                    <!-- Image -->
-                    <img src="{{ asset('images/about/'.$tentang->thumbnail) }}" class="screenshot img-fluid"
-                        style="height: 300px; width:400px;" alt="...">
+                            <!-- Image -->
+                            <img src="{{ asset('images/about/'.$tentang->thumbnail) }}" class="screenshot img-fluid"
+                                style="height: 300px; width:400px;" alt="...">
+
+                        </div>
+
+                    </div>
 
                 </div>
-
-            </div>
-
-        </div>
-        <div class="col-12 col-md-7 col-lg-6">
-
-            <!-- Text -->
-            <p class="fs-lg mb-6">
-                {{ $tentang->about_content }}
-            </p>
-
-            <!-- List -->
-            <div class="d-flex">
-
-                <!-- Icon -->
-                <div class="icon text-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" fill-rule="evenodd">
-                            <path d="M0 0h24v24H0z"></path>
-                            <path
-                                d="M12 8H8a4 4 0 00-4 4v1a3 3 0 003 3v2a5 5 0 01-5-5v-1a6 6 0 016-6h4V4.728a.5.5 0 01.8-.4l2.856 2.133a.5.5 0 01-.001.802l-2.857 2.121A.5.5 0 0112 8.983V8z"
-                                fill="#335EEA"></path>
-                            <path
-                                d="M12.058 16H16a4 4 0 004-4v-1a3 3 0 00-3-3V6a5 5 0 015 5v1a6 6 0 01-6 6h-3.942v.983a.5.5 0 01-.798.401l-2.857-2.12a.5.5 0 010-.803l2.856-2.134a.5.5 0 01.8.401V16z"
-                                fill="#335EEA" opacity=".3"></path>
-                        </g>
-                    </svg> </div>
-
-                <div class="ms-5">
-
-                    <!-- Heading -->
-                    <h4 class="mb-1">
-                        Visi
-                    </h4>
+                <div class="col-12 col-md-7 col-lg-6">
 
                     <!-- Text -->
-                    <p class="mb-6">
-                        {{ $tentang->visi }}
+                    <p class="fs-lg mb-6">
+                        {{ $tentang->about_content }}
                     </p>
 
+                    <!-- List -->
+                    <div class="d-flex">
+
+                        <!-- Icon -->
+                        <div class="icon text-primary">
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M12 8H8a4 4 0 00-4 4v1a3 3 0 003 3v2a5 5 0 01-5-5v-1a6 6 0 016-6h4V4.728a.5.5 0 01.8-.4l2.856 2.133a.5.5 0 01-.001.802l-2.857 2.121A.5.5 0 0112 8.983V8z"
+                                        fill="#335EEA"></path>
+                                    <path
+                                        d="M12.058 16H16a4 4 0 004-4v-1a3 3 0 00-3-3V6a5 5 0 015 5v1a6 6 0 01-6 6h-3.942v.983a.5.5 0 01-.798.401l-2.857-2.12a.5.5 0 010-.803l2.856-2.134a.5.5 0 01.8.401V16z"
+                                        fill="#335EEA" opacity=".3"></path>
+                                </g>
+                            </svg> </div>
+
+                        <div class="ms-5">
+
+                            <!-- Heading -->
+                            <h4 class="mb-1">
+                                Visi
+                            </h4>
+
+                            <!-- Text -->
+                            <p class="mb-6">
+                                {{ $tentang->visi }}
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="d-flex">
+
+                        <!-- Icon -->
+                        <div class="icon text-primary">
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M0 0h24v24H0z"></path>
+                                    <path
+                                        d="M17.272 8.685a1 1 0 111.456-1.37l4 4.25a1 1 0 010 1.37l-4 4.25a1 1 0 01-1.456-1.37l3.355-3.565-3.355-3.565zm-10.544 0L3.373 12.25l3.355 3.565a1 1 0 01-1.456 1.37l-4-4.25a1 1 0 010-1.37l4-4.25a1 1 0 011.456 1.37z"
+                                        fill="#335EEA"></path>
+                                    <rect fill="#335EEA" opacity=".3" transform="rotate(15 12 12)" x="11" y="4"
+                                        width="2" height="16" rx="1"></rect>
+                                </g>
+                            </svg> </div>
+
+                        <div class="ms-5">
+
+                            <!-- Heading -->
+                            <h4 class="mb-1">
+                                Misi
+                            </h4>
+
+                            <!-- Text -->
+                            <p class="mb-6 mb-md-0">
+                                {!!$tentang->misi !!}
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
-
             </div>
-            <div class="d-flex">
-
-                <!-- Icon -->
-                <div class="icon text-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" fill-rule="evenodd">
-                            <path d="M0 0h24v24H0z"></path>
-                            <path
-                                d="M17.272 8.685a1 1 0 111.456-1.37l4 4.25a1 1 0 010 1.37l-4 4.25a1 1 0 01-1.456-1.37l3.355-3.565-3.355-3.565zm-10.544 0L3.373 12.25l3.355 3.565a1 1 0 01-1.456 1.37l-4-4.25a1 1 0 010-1.37l4-4.25a1 1 0 011.456 1.37z"
-                                fill="#335EEA"></path>
-                            <rect fill="#335EEA" opacity=".3" transform="rotate(15 12 12)" x="11" y="4" width="2"
-                                height="16" rx="1"></rect>
-                        </g>
-                    </svg> </div>
-
-                <div class="ms-5">
-
-                    <!-- Heading -->
-                    <h4 class="mb-1">
-                        Misi
-                    </h4>
-
-                    <!-- Text -->
-                    <p class="mb-6 mb-md-0">
-                        {!!$tentang->misi !!}
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
-    </div>
-</div>
-@endforeach
+        @endforeach
     </section>
 
 
